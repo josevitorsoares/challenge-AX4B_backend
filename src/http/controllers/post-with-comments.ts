@@ -5,9 +5,9 @@ export async function postWithCommentsController(request: FastifyRequest, reply:
     try {
         const { page } = request.query as { page: number };
         const useCase = await makeGetPostsWithCommentsUseCase();
-        const postWithComments = await useCase.execute(page);
+        const { postsOnPage, totalPosts } = await useCase.execute(page);
 
-        return reply.send(postWithComments);
+        return reply.send({ postsOnPage, totalPosts });
     } catch (error) {
         return reply.send(error);
     }
