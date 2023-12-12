@@ -20,6 +20,12 @@ export class GetPostWithCommentsUseCase {
             return post;
         }));
 
-        return postWithComments.slice((page - 1) * 20, page * 20);
+        const postsOnPage = postWithComments.slice((page - 1) * 20, page * 20);
+        const totalPosts = posts.length;
+
+        return {
+            postsOnPage,
+            totalPosts
+        };
     }
 }
