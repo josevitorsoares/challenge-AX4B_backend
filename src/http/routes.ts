@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
-import { page } from "./controllers/page/page";
+import { postWithCommentsController } from "./controllers/post-with-comments";
 
 export async function appRoutes(app: FastifyInstance){
-    app.get("/page", page);
+    app.get("/posts", postWithCommentsController);
 }
